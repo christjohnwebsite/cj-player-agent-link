@@ -77,3 +77,7 @@ footer{color:#8f91b2}
 
 /* Player and Agent link short descriptions: bold blue text */
 .link-info p{color:#78aaff!important;font-weight:800!important;line-height:1.55}
+
+/* CJ COMMUNITY neon-purple logo replacement */
+.brand-mark.brand-logo{display:block;object-fit:contain;width:48px;height:48px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;flex:0 0 48px;}
+@media(max-width:600px){.brand-mark.brand-logo{width:42px;height:42px;flex-basis:42px;}}
