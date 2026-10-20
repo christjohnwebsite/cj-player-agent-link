@@ -55,30 +55,30 @@ alter table public.site_links add column if not exists icon_url text;
 
 -- Publicly readable icons; only the designated admin can upload, update, or delete them.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('link-icons', 'link-icons', true, 2097152, array['image/png','image/jpeg','image/webp','image/gif','image/svg+xml'])
+values ('community-images', 'community-images', true, 2097152, array['image/png','image/jpeg','image/webp','image/gif','image/svg+xml'])
 on conflict (id) do update set public = true, file_size_limit = 2097152,
   allowed_mime_types = array['image/png','image/jpeg','image/webp','image/gif','image/svg+xml'];
 
-drop policy if exists "Public can view link icons" on storage.objects;
-create policy "Public can view link icons" on storage.objects
-for select to anon, authenticated using (bucket_id = 'link-icons');
+drop policy if exists "Public can view community images" on storage.objects;
+create policy "Public can view community images" on storage.objects
+for select to anon, authenticated using (bucket_id = 'community-images');
 
-drop policy if exists "Designated admin can upload link icons" on storage.objects;
-create policy "Designated admin can upload link icons" on storage.objects
+drop policy if exists "Designated admin can upload community images" on storage.objects;
+create policy "Designated admin can upload community images" on storage.objects
 for insert to authenticated with check (
-  bucket_id = 'link-icons' and auth.uid() = 'e7156689-46a5-4709-96d2-2114aece3ef1'::uuid
+  bucket_id = 'community-images' and auth.uid() = 'e7156689-46a5-4709-96d2-2114aece3ef1'::uuid
 );
 
-drop policy if exists "Designated admin can update link icons" on storage.objects;
-create policy "Designated admin can update link icons" on storage.objects
+drop policy if exists "Designated admin can update community images" on storage.objects;
+create policy "Designated admin can update community images" on storage.objects
 for update to authenticated using (
-  bucket_id = 'link-icons' and auth.uid() = 'e7156689-46a5-4709-96d2-2114aece3ef1'::uuid
+  bucket_id = 'community-images' and auth.uid() = 'e7156689-46a5-4709-96d2-2114aece3ef1'::uuid
 ) with check (
-  bucket_id = 'link-icons' and auth.uid() = 'e7156689-46a5-4709-96d2-2114aece3ef1'::uuid
+  bucket_id = 'community-images' and auth.uid() = 'e7156689-46a5-4709-96d2-2114aece3ef1'::uuid
 );
 
-drop policy if exists "Designated admin can delete link icons" on storage.objects;
-create policy "Designated admin can delete link icons" on storage.objects
+drop policy if exists "Designated admin can delete community images" on storage.objects;
+create policy "Designated admin can delete community images" on storage.objects
 for delete to authenticated using (
-  bucket_id = 'link-icons' and auth.uid() = 'e7156689-46a5-4709-96d2-2114aece3ef1'::uuid
+  bucket_id = 'community-images' and auth.uid() = 'e7156689-46a5-4709-96d2-2114aece3ef1'::uuid
 );

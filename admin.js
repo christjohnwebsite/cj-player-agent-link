@@ -24,9 +24,9 @@
     if(!["image/png","image/jpeg","image/webp","image/gif","image/svg+xml"].includes(file.type)) throw new Error("Use PNG, JPG, WEBP, GIF, or SVG for the icon.");
     const ext=({"image/png":"png","image/jpeg":"jpg","image/webp":"webp","image/gif":"gif","image/svg+xml":"svg"})[file.type];
     const path=`${currentUser.id}/${Date.now()}-${crypto.randomUUID()}.${ext}`;
-    const {error}=await client.storage.from("link-icons").upload(path,file,{contentType:file.type,upsert:false});
-    if(error) throw new Error("Icon upload failed: "+error.message+". Check the Supabase Storage setup in schema.sql.");
-    const {data}=client.storage.from("link-icons").getPublicUrl(path);
+    const {error}=await client.storage.from("community-images").upload(path,file,{contentType:file.type,upsert:false});
+    if(error) throw new Error("Icon upload failed: "+error.message+". Confirm the community-images bucket and Storage policies are set up in schema.sql.");
+    const {data}=client.storage.from("community-images").getPublicUrl(path);
     return data.publicUrl;
   }
   function safeUrl(value) { try { const u=new URL(value); return ["http:","https:"].includes(u.protocol) ? u.href : null; } catch { return null; } }

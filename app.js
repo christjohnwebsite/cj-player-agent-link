@@ -40,11 +40,22 @@
       if (!client) { showFallback("Website links are temporarily unavailable."); card.href = directory; return; }
       try {
         const { data, error } = await client.from("site_links")
-          .select("url,description,created_at").eq("kind", kind).eq("enabled", true)
+          .select("url,description,created_at,icon_url").eq("kind", kind).eq("enabled", true)
           .order("created_at", { ascending: false }).limit(1);
         if (error) throw error;
         if (data && data.length) {
           const item = data[0];
+          // Show the uploaded icon on the public homepage portal card too.
+          const iconWrap = card.querySelector(".portal-icon");
+          if (iconWrap && item.icon_url) {
+            const img = document.createElement("img");
+            img.className = "portal-custom-icon";
+            img.src = item.icon_url;
+            img.alt = kind === "player" ? "Player link logo" : "Agent link logo";
+            img.loading = "lazy";
+            img.onerror = () => { img.remove(); };
+            iconWrap.replaceChildren(img);
+          }
           showFallback(item.description || "Open the " + kind + " website");
           const url = safeUrl(item.url);
           if (url !== "#") {
