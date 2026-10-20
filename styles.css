@@ -34,3 +34,38 @@ html,body{background:var(--bg);color:var(--text)}
 .portal-go{display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding:11px 16px;border-radius:8px;background:#168447;color:#fff!important;font-size:13px;font-weight:800;letter-spacing:.2px;border:1px solid #24985a;transition:background .15s,transform .15s}
 .portal-go:hover{background:#0f713a;transform:translateY(-1px)}
 .portal-go:focus-visible{outline:2px solid #78d9a2;outline-offset:3px}
+
+/* PHANTOM VORTEX theme: deep violet, electric blue, restrained glass accents */
+:root{--bg:#090b18;--panel:#12152a;--panel2:#1b2040;--blue:#a78bfa;--blue2:#c4b5fd;--cyan:#6ee7f9;--text:#f4f2ff;--muted:#b1b4d0;--line:#303253;--green:#80d6a2}
+html,body{background:radial-gradient(ellipse at 50% -20%,#292052 0%,#101329 42%,#090b18 78%);background-attachment:fixed;color:var(--text)}
+.topbar{background:rgba(13,15,34,.94);border-bottom-color:#34305c;backdrop-filter:blur(12px)}
+.brand-mark{background:linear-gradient(135deg,#6d28d9,#2563eb);box-shadow:0 0 18px #7c3aed35;border:1px solid #9d8bff55}
+.brand b{color:#a78bfa}
+.outline-btn{background:#171a35;border-color:#45416e;color:#eeeaff}
+.outline-btn:hover{background:#242047}
+.primary-btn{background:linear-gradient(135deg,#6d28d9,#315ee8);border-color:#8b5cf6}
+.primary-btn:hover{background:linear-gradient(135deg,#7c3aed,#3b82f6)}
+.eyebrow,.portal-icon,.portal-go:not(:hover),.backlink,.navlink.active,.navlink:hover{color:#b8a5ff}
+.pulse{background:#a78bfa;box-shadow:0 0 10px #a78bfa}
+.portal-card,.notice,.link-card,.loading,.empty-state,.admin-panel,.admin-row{background:linear-gradient(145deg,rgba(25,27,55,.96),rgba(16,19,40,.97));border-color:#34345f;box-shadow:inset 0 1px 0 #ffffff08}
+.portal-card{border-radius:16px;position:relative;overflow:hidden}
+.portal-card:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,#8b5cf6,#38bdf8,transparent);opacity:.75}
+.portal-card:hover{border-color:#7663c9;box-shadow:0 12px 32px #03040c80,0 0 22px #7c3aed18;transform:translateY(-2px)}
+.portal-card,.portal-card:hover{transition:transform .18s,border-color .18s,box-shadow .18s}
+.portal-name{color:#f7f4ff}
+.portal-desc{color:#9fc5ff!important;font-weight:750!important}
+.portal-go{background:linear-gradient(135deg,#168447,#0f9f74);border-color:#22a879;color:#fff!important;box-shadow:0 4px 15px #05966920}
+.portal-go:hover{background:linear-gradient(135deg,#0f713a,#087f61)}
+.link-symbol{background:#272047;color:#c4b5fd;border:1px solid #4c3b78}
+.open-link,.tiny-btn{background:#211b3b;border-color:#564780;color:#d5caff}
+.open-link:hover{background:#302453}
+.modal{background:#14162d;border-color:#39365f;color:var(--text)}
+.modal::backdrop{background:#03040bd9}
+.modal label,.admin-panel label{color:#e1ddfa}
+.modal input,.admin-panel input,.admin-panel select,.admin-panel textarea{background:#0e1125;border-color:#3e3d63;color:var(--text)}
+.modal input:focus,.admin-panel input:focus,.admin-panel select:focus,.admin-panel textarea:focus{border-color:#a78bfa;box-shadow:0 0 0 3px #a78bfa20}
+.check-label input{accent-color:#a78bfa}
+.status{color:#86efac}.status.off{color:#fcd34d}
+.tiny-btn.delete{border-color:#75405b;color:#ffb4ce;background:#2b172b}
+footer{color:#8f91b2}
+@media(prefers-reduced-motion:reduce){.portal-card,.portal-card:hover,.portal-go{transition:none;transform:none}}
