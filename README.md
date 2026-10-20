@@ -10,7 +10,7 @@ Static website for Cloudflare Pages with separate Player and Agent pages, Supaba
 - `styles.css` — Cyber Neon Blue responsive design
 - `app.js`, `admin.js` — website behavior
 - `config.js` — Supabase project URL and public anon key
-- `schema.sql` — database table and Row Level Security policies
+- `schema.sql` — database table, Row Level Security policies, and secure icon Storage bucket
 
 ## 1. Set up Supabase
 1. Create a project at https://supabase.com/.
@@ -49,3 +49,7 @@ Static website for Cloudflare Pages with separate Player and Agent pages, Supaba
 
 ## Local testing
 You can open `index.html` for a quick visual preview. Supabase features require a valid config and are best tested through a local static server or deployed HTTPS site.
+
+
+## Uploading link icons
+In Admin Panel, choose an image in “Link icon / logo” before saving a link. PNG, JPG, WEBP, GIF, and SVG files up to 2 MB are supported. The updated `schema.sql` must be run in Supabase before icon uploads will work. The public site only displays the icon; only the designated admin can upload or manage stored icons.

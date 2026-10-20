@@ -72,13 +72,14 @@
     if (!client) { grid.innerHTML = '<div class="empty-state">Supabase is not configured yet. Admin: edit config.js, then follow README.md.</div>'; return; }
     const kind = grid.dataset.kind;
     grid.innerHTML = '<div class="loading">LOADING LINKS…</div>';
-    const { data, error } = await client.from("site_links").select("id,title,kind,url,description,enabled").eq("kind", kind).eq("enabled", true).order("created_at", { ascending: false });
+    const { data, error } = await client.from("site_links").select("id,title,kind,url,description,enabled,icon_url").eq("kind", kind).eq("enabled", true).order("created_at", { ascending: false });
     if (error) { grid.innerHTML = '<div class="empty-state">Could not load links. Check Supabase setup and schema.sql.</div>'; console.error(error); return; }
     if (!data || !data.length) { grid.innerHTML = '<div class="empty-state">WALA PAY LINKS — Please check again later.</div>'; return; }
     grid.innerHTML = "";
     for (const item of data) {
       const card = document.createElement("article"); card.className = "link-card";
-      const sym = document.createElement("div"); sym.className = "link-symbol"; sym.textContent = kind === "player" ? "◈" : "⬡";
+      const sym = document.createElement("div"); sym.className = "link-symbol";
+      if(item.icon_url){const img=document.createElement("img");img.className="link-custom-icon";img.src=item.icon_url;img.alt="";img.loading="lazy";sym.append(img);}else{sym.textContent = kind === "player" ? "◈" : "⬡";}
       const info = document.createElement("div"); info.className = "link-info";
       const title = document.createElement("h3"); title.textContent = item.title;
       const desc = document.createElement("p"); desc.textContent = item.description || "Official website link.";

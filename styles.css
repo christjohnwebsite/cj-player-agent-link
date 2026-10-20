@@ -81,3 +81,15 @@ footer{color:#8f91b2}
 /* CJ COMMUNITY neon-purple logo replacement */
 .brand-mark.brand-logo{display:block;object-fit:contain;width:48px;height:48px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;flex:0 0 48px;}
 @media(max-width:600px){.brand-mark.brand-logo{width:42px;height:42px;flex-basis:42px;}}
+
+
+/* CJ Community portal icons and optional uploaded link icons */
+.portal-icon{display:flex;align-items:center;justify-content:center;width:58px;height:58px;margin-bottom:16px;border-radius:15px;background:linear-gradient(145deg,#24164a,#10152d);border:1px solid #8b5cf6;box-shadow:0 0 22px #a855f733;color:#d8b4fe}
+.portal-icon svg{width:36px;height:36px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px #a855f7)}
+.player-portal-icon{color:#c4b5fd}.agent-portal-icon{color:#e879f9}
+.link-custom-icon{display:block;width:100%;height:100%;object-fit:contain;border-radius:8px}
+.admin-link-icon{display:block;width:42px;height:42px;object-fit:contain;border-radius:8px;margin-top:8px;background:#090b18;border:1px solid #45416e}
+.current-icon-wrap{display:flex;align-items:center;gap:10px;margin-top:8px;color:var(--muted);font-size:12px}
+.current-icon-wrap img{width:42px;height:42px;object-fit:contain;border:1px solid var(--line);border-radius:8px;background:#090b18}
+.admin-panel input[type=file]{padding:10px}
+@media(max-width:600px){.portal-icon{width:52px;height:52px}}
