@@ -97,9 +97,10 @@
           else sym.textContent = item.kind === "none" ? "◇" : "◎";
           const info = document.createElement("div"); info.className = "link-info";
           const title = document.createElement("h3"); title.textContent = item.title;
-          const desc = document.createElement("p"); desc.textContent = item.description || "Community link.";
+          const description = (item.description || "").trim();
+          if (description) { const desc = document.createElement("p"); desc.textContent = description; info.append(title, desc); }
           const a = document.createElement("a"); a.className = "open-link"; a.href = safeUrl(item.url); a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = "OPEN";
-          info.append(title, desc, a); card.append(sym, info); othersGrid.append(card);
+          info.append(title, a); card.append(sym, info); othersGrid.append(card);
         }
       } catch (err) { console.error("Community links failed to load:", err); }
     })();
