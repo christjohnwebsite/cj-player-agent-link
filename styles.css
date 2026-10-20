@@ -69,3 +69,11 @@ html,body{background:radial-gradient(ellipse at 50% -20%,#292052 0%,#101329 42%,
 .tiny-btn.delete{border-color:#75405b;color:#ffb4ce;background:#2b172b}
 footer{color:#8f91b2}
 @media(prefers-reduced-motion:reduce){.portal-card,.portal-card:hover,.portal-go{transition:none;transform:none}}
+
+/* Requested homepage text emphasis */
+.hero>.eyebrow{font-weight:900!important}
+.hero>p{font-weight:800!important;color:#22c55e!important}
+
+
+/* Player and Agent link short descriptions: bold blue text */
+.link-info p{color:#78aaff!important;font-weight:800!important;line-height:1.55}
