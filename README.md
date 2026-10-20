@@ -53,3 +53,7 @@ You can open `index.html` for a quick visual preview. Supabase features require 
 
 ## Uploading link icons
 In Admin Panel, choose an image in “Link icon / logo” before saving a link. PNG, JPG, WEBP, GIF, and SVG files up to 2 MB are supported. The updated `schema.sql` must be run in Supabase before icon uploads will work. This version uses the `community-images` bucket. It keeps public read access for displayed icons and limits uploads/updates/deletes to the designated admin Auth UUID. The public site only displays the icon; only the designated admin can upload or manage stored icons.
+
+
+## OTHERS / NONE categories
+The Admin Panel now supports OTHERS and NONE. Run the migration section at the end of `schema.sql` in Supabase SQL Editor before saving links in either new category. Enabled OTHERS/NONE links are displayed in the Community Links section on the public homepage.

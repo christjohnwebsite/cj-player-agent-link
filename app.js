@@ -77,6 +77,33 @@
       }
     });
   }
+  // Public homepage: render links categorized as OTHERS or NONE, such as Facebook and Telegram.
+  const othersSection = byId("publicOthers");
+  const othersGrid = byId("othersGrid");
+  if (othersSection && othersGrid && client) {
+    (async () => {
+      try {
+        const { data, error } = await client.from("site_links")
+          .select("id,title,kind,url,description,enabled,icon_url,created_at")
+          .in("kind", ["other", "none"]).eq("enabled", true).order("created_at", { ascending: false });
+        if (error) throw error;
+        if (!data || !data.length) return;
+        othersSection.hidden = false;
+        othersGrid.innerHTML = "";
+        for (const item of data) {
+          const card = document.createElement("article"); card.className = "link-card";
+          const sym = document.createElement("div"); sym.className = "link-symbol";
+          if (item.icon_url) { const img = document.createElement("img"); img.className = "link-custom-icon"; img.src = item.icon_url; img.alt = ""; img.loading = "lazy"; sym.append(img); }
+          else sym.textContent = item.kind === "none" ? "◇" : "◎";
+          const info = document.createElement("div"); info.className = "link-info";
+          const title = document.createElement("h3"); title.textContent = item.title;
+          const desc = document.createElement("p"); desc.textContent = item.description || "Community link.";
+          const a = document.createElement("a"); a.className = "open-link"; a.href = safeUrl(item.url); a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = "OPEN LINK ↗";
+          info.append(title, desc, a); card.append(sym, info); othersGrid.append(card);
+        }
+      } catch (err) { console.error("Community links failed to load:", err); }
+    })();
+  }
   const grid = byId("linkGrid");
   if (!grid) return;
   async function loadLinks() {

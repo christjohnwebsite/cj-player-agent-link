@@ -53,7 +53,7 @@
       const row=document.createElement("div");row.className="admin-row";
       const main=document.createElement("div");main.className="admin-row-main";
       const strong=document.createElement("strong");strong.textContent=item.title;
-      const small=document.createElement("small");small.textContent=item.kind.toUpperCase()+" • "+item.url;
+      const small=document.createElement("small");small.textContent=({player:"PLAYER LINK",agent:"AGENT LINK",other:"OTHERS",none:"NONE"}[item.kind]||item.kind.toUpperCase())+" • "+item.url;
       if(item.icon_url){const icon=document.createElement("img");icon.className="admin-link-icon";icon.src=item.icon_url;icon.alt="";icon.loading="lazy";main.append(icon);}
       const status=document.createElement("span");status.className="status"+(item.enabled?"":" off");status.textContent=item.enabled?"VISIBLE":"HIDDEN";
       main.append(strong,small,status);
