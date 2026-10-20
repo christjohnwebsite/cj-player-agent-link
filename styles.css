@@ -27,3 +27,10 @@ html,body{background:var(--bg);color:var(--text)}
 .check-label input{accent-color:#6da8ff}
 .tiny-btn.delete{border-color:#75464c;color:#ff9b9b;background:#2c202b}
 .status{color:var(--green)}.status.off{color:#e9bf79}
+
+
+/* Homepage: bold blue descriptions and green OPEN button */
+.portal-desc{color:#78aaff!important;font-weight:750!important;line-height:1.55}
+.portal-go{display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding:11px 16px;border-radius:8px;background:#168447;color:#fff!important;font-size:13px;font-weight:800;letter-spacing:.2px;border:1px solid #24985a;transition:background .15s,transform .15s}
+.portal-go:hover{background:#0f713a;transform:translateY(-1px)}
+.portal-go:focus-visible{outline:2px solid #78d9a2;outline-offset:3px}
