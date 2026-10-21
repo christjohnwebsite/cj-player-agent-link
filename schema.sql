@@ -55,8 +55,8 @@ alter table public.site_links add column if not exists icon_url text;
 
 -- Publicly readable icons; only the designated admin can upload, update, or delete them.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('community-images', 'community-images', true, 2097152, array['image/png','image/jpeg','image/webp','image/gif','image/svg+xml'])
-on conflict (id) do update set public = true, file_size_limit = 2097152,
+values ('community-images', 'community-images', true, 10485760, array['image/png','image/jpeg','image/webp','image/gif','image/svg+xml'])
+on conflict (id) do update set public = true, file_size_limit = 10485760,
   allowed_mime_types = array['image/png','image/jpeg','image/webp','image/gif','image/svg+xml'];
 
 drop policy if exists "Public can view community images" on storage.objects;

@@ -20,7 +20,7 @@
   async function uploadSelectedIcon() {
     const file=$("linkIcon").files && $("linkIcon").files[0];
     if(!file) return form.dataset.existingIconUrl || null;
-    if(file.size > 2*1024*1024) throw new Error("Icon image must be 2 MB or smaller.");
+    if(file.size > 10*1024*1024) throw new Error("Icon image must be 10 MB or smaller.");
     if(!["image/png","image/jpeg","image/webp","image/gif","image/svg+xml"].includes(file.type)) throw new Error("Use PNG, JPG, WEBP, GIF, or SVG for the icon.");
     const ext=({"image/png":"png","image/jpeg":"jpg","image/webp":"webp","image/gif":"gif","image/svg+xml":"svg"})[file.type];
     const path=`${currentUser.id}/${Date.now()}-${crypto.randomUUID()}.${ext}`;
